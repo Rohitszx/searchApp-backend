@@ -27,6 +27,9 @@ module.exports.handler = async (event, context) => {
 
   app.use(cors());
   app.use(bodyParser.json());
+  app.get('/api/hello', async (req, res) => {
+    return res.json({ message: 'Hello from server!' });
+  });
 
   app.post('/api/search', async (req, res) => {
     const { query, type, page = 1, limit = 10 } = req.body;
