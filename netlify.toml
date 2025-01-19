@@ -1,6 +1,5 @@
 [build]
   functions = "functions"
-  publish = "public"  # or your static file directory if you have one
 
 [[redirects]]
   from = "/api/*"
