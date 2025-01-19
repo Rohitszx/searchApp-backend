@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package questions;
+
+message Option {
+  string text = 1;
+  bool isCorrectAnswer = 2;
+}
+
+message Block {
+  string text = 1;
+  bool showInOption = 2;
+  bool isAnswer = 3;
+}
+
+message Question {
+  string _id = 1; // MongoDB ObjectId
+  string title = 2;
+  string type = 3;  // "MCQ", "ANAGRAM", etc.
+  repeated Option options = 4;  // For MCQs
+  repeated Block blocks = 5;    // For Anagrams
+  string solution = 6;          // For Anagrams
+  string anagramType = 7;       // For Anagrams
+}
+
+message SearchQuestionsRequest {
+  string query = 1;
+  string type = 2;
+  int32 page = 3;
+  int32 limit = 4;
+}
+
+message SearchQuestionsResponse {
+  repeated Question questions = 1;
+  int32 total = 2;
+}
+
+service QuestionService {
+  rpc SearchQuestions(SearchQuestionsRequest) returns (SearchQuestionsResponse);
+}
