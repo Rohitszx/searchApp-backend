@@ -10,7 +10,7 @@ async function searchQuestions(db, call, callback) {
     const collection = db.collection(config.dbName);
     const filter = {
       ...(query && { title: { $regex: query, $options: 'i' } }),
-      ...(type && { type }), // filter by type if provided
+      ...(type && { type }),
     };
 
     const [questions, total] = await Promise.all([
@@ -19,30 +19,26 @@ async function searchQuestions(db, call, callback) {
     ]);
 
     const formattedQuestions = questions.map((q) => {
-      // Handle MCQ questions
       if (q.type === 'MCQ') {
         return {
           id: q._id.toString(),
           type: q.type,
           title: q.title,
           solution: q.solution || '',
-          options: q.options || [], // Add options for MCQs
+          options: q.options || [], 
         };
       }
 
-      // Handle ANAGRAM questions
       if (q.type === 'ANAGRAM') {
         return {
           id: q._id.toString(),
           type: q.type,
           title: q.title,
           solution: q.solution || '',
-          anagramType: q.anagramType || '', // Add anagramType
-          blocks: q.blocks || [], // Add blocks for Anagrams
+          anagramType: q.anagramType || '', 
+          blocks: q.blocks || [],
         };
       }
-
-      // Default return for other question types (optional)
       return {
         id: q._id.toString(),
         type: q.type,

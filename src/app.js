@@ -66,7 +66,6 @@ function startHttpServer() {
         logger.error('Error communicating with gRPC server:', err);
         return res.status(500).json({ error: 'Internal server error' });
       }
-      console.log('response:', response);
       return res.json(response);
     });
   });

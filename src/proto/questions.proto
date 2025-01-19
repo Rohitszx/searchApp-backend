@@ -14,13 +14,13 @@ message Block {
 }
 
 message Question {
-  string _id = 1; // MongoDB ObjectId
+  string _id = 1; 
   string title = 2;
-  string type = 3;  // "MCQ", "ANAGRAM", etc.
-  repeated Option options = 4;  // For MCQs
-  repeated Block blocks = 5;    // For Anagrams
-  string solution = 6;          // For Anagrams
-  string anagramType = 7;       // For Anagrams
+  string type = 3;  
+  repeated Option options = 4; 
+  repeated Block blocks = 5;   
+  string solution = 6;          
+  string anagramType = 7;    
 }
 
 message SearchQuestionsRequest {
