@@ -7,7 +7,7 @@ const config = require('../src/config/index');
 const logger = require('../src/utils/logger');
 const { searchQuestions } = require('../src/services/questionService');
 
-const PROTO_PATH = path.resolve(__dirname, '../proto/questions.proto');
+const PROTO_PATH = path.resolve(__dirname, '../src/proto/questions.proto');
 const packageDefinition = protoLoader.loadSync(PROTO_PATH, {
   keepCase: true,
   longs: String,

@@ -1,10 +1,10 @@
 const grpc = require('@grpc/grpc-js');
 const protoLoader = require('@grpc/proto-loader');
 const path = require('path');
-const config = require('../config');
-const logger = require('../utils/logger');
+const config = require('../src/config');
+const logger = require('../src/utils/logger');
 
-const PROTO_PATH = path.resolve(__dirname, '../proto/questions.proto');
+const PROTO_PATH = path.resolve(__dirname, '../src/proto/questions.proto');
 const packageDefinition = protoLoader.loadSync(PROTO_PATH, {
   keepCase: true,
   longs: String,
@@ -18,7 +18,7 @@ const questionsProto = grpc.loadPackageDefinition(packageDefinition).questions;
 module.exports.handler = async (event, context) => {
   const server = new grpc.Server();
 
-  const { searchQuestions } = require('../services/questionService');
+  const { searchQuestions } = require('../src/services/questionService');
 
   server.addService(questionsProto.QuestionService.service, {
     SearchQuestions: (call, callback) => searchQuestions(call.request, callback),
