@@ -3,7 +3,7 @@
 
 ## Table of Contents
 1. [Backend Setup](#backend-setup)
-2. [Frontend repo link ] (https://github.com/Rohitszx/searchApp-backend)
+2. [Frontend repo link ] (https://github.com/Rohitszx/searchApp-frontend)
 3. [Common Notes](#common-notes)
 
 ## Backend Setup
